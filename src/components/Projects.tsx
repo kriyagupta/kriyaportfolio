@@ -11,6 +11,7 @@ const Projects = () => {
       tech: ["Python", "Django", "MySQL", "Bootstrap"],
       icon: Layers,
       color: "from-blue-500 to-indigo-600",
+      link: null,
     },
     {
       title: "AI Virtual Assistant",
@@ -20,6 +21,7 @@ const Projects = () => {
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
       icon: Bot,
       color: "from-emerald-500 to-teal-600",
+      link: "https://kriyagupta.github.io/virtual-assistant/",
     },
     {
       title: "Expense Tracker",
@@ -29,6 +31,7 @@ const Projects = () => {
       tech: ["HTML", "CSS", "JavaScript"],
       icon: Code2,
       color: "from-orange-500 to-red-600",
+      link: "https://kriyagupta.github.io/Expense-tracker/",
     },
     {
       title: "Vegetable E-commerce",
@@ -38,6 +41,7 @@ const Projects = () => {
       tech: ["HTML", "CSS", "Bootstrap"],
       icon: ShoppingCart,
       color: "from-green-500 to-emerald-600",
+      link: "https://kriyagupta.github.io/kriyagupta-vegetable/",
     },
   ];
 
@@ -58,50 +62,61 @@ const Projects = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-500 hover:-translate-y-2 border border-border"
-            >
-              {/* Project Header with gradient */}
-              <div className={`h-32 bg-gradient-to-r ${project.color} flex items-center justify-center relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/10" />
-                <project.icon className="w-16 h-16 text-white/80 group-hover:scale-110 transition-transform duration-500" />
-              </div>
-
-              {/* Project Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
-                    <span className="text-sm text-muted-foreground">{project.subtitle}</span>
+          {projects.map((project, index) => {
+            const CardWrapper = project.link ? 'a' : 'div';
+            const cardProps = project.link ? { href: project.link, target: "_blank", rel: "noopener noreferrer" } : {};
+            
+            return (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <CardWrapper
+                  {...cardProps}
+                  className="group block bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-500 hover:-translate-y-2 border border-border"
+                >
+                  {/* Project Header with gradient */}
+                  <div className={`h-32 bg-gradient-to-r ${project.color} flex items-center justify-center relative overflow-hidden`}>
+                    <div className="absolute inset-0 bg-black/10" />
+                    <project.icon className="w-16 h-16 text-white/80 group-hover:scale-110 transition-transform duration-500" />
                   </div>
-                  <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
 
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
+                  {/* Project Content */}
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                          {project.title}
+                        </h3>
+                        <span className="text-sm text-muted-foreground">{project.subtitle}</span>
+                      </div>
+                      {project.link && (
+                        <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      )}
+                    </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-muted text-muted-foreground rounded-md text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-muted text-muted-foreground rounded-md text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </CardWrapper>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
