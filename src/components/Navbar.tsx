@@ -40,7 +40,7 @@ const Navbar = () => {
             <span className={isScrolled ? "text-foreground" : "text-primary-foreground"}>
               Kriya
             </span>
-            <span className="gradient-text">.dev</span>
+            <span className="gradient-text"> Gupta</span>
           </a>
 
           {/* Desktop Navigation */}
