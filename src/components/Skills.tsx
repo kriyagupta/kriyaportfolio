@@ -24,7 +24,7 @@ const Skills = () => {
     },
     {
       category: "Tools",
-      skills: ["VS Code"],
+      skills: ["VS Code", "MS Word", "MS Excel"],
     },
   ];
 
@@ -54,14 +54,14 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-card p-6 rounded-xl shadow-card border border-border"
+              className="bg-card p-6 rounded-xl shadow-card border border-border hover:shadow-hover transition-all duration-300"
             >
-              <h3 className="font-display font-semibold text-foreground mb-4 text-lg">{category.category}</h3>
+              <h3 className="font-display font-semibold text-primary mb-4 text-lg border-b border-border pb-2">{category.category}</h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-default"
+                    className="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-300 cursor-default"
                   >
                     {skill}
                   </span>

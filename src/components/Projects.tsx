@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Code2, Layers, ShoppingCart, Bot } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import virtualAssistantImg from "@/assets/virtual-assistant.png";
+import vegetableImg from "@/assets/vegetable-ecommerce.png";
+import jobPortalImg from "@/assets/job-portal.jpg";
+import expenseTrackerImg from "@/assets/expense-tracker.png";
 
 const Projects = () => {
   const projects = [
@@ -9,8 +13,7 @@ const Projects = () => {
       description:
         "A complete job listing platform with separate modules for Admin, Employer, and User. Features secure login/authentication and job posting functionalities.",
       tech: ["Python", "Django", "MySQL", "Bootstrap"],
-      icon: Layers,
-      color: "from-blue-500 to-indigo-600",
+      image: jobPortalImg,
       link: null,
     },
     {
@@ -19,8 +22,7 @@ const Projects = () => {
       description:
         "Web-based AI assistant interface with smooth user experience and interactive UI. Built with modern frontend technologies.",
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-      icon: Bot,
-      color: "from-emerald-500 to-teal-600",
+      image: virtualAssistantImg,
       link: "https://kriyagupta.github.io/virtual-assistant/",
     },
     {
@@ -29,8 +31,7 @@ const Projects = () => {
       description:
         "Application to help users manage and track daily spending with data visualization and clean interface design.",
       tech: ["HTML", "CSS", "JavaScript"],
-      icon: Code2,
-      color: "from-orange-500 to-red-600",
+      image: expenseTrackerImg,
       link: "https://kriyagupta.github.io/Expense-tracker/",
     },
     {
@@ -39,8 +40,7 @@ const Projects = () => {
       description:
         "Responsive frontend for a vegetable selling platform with modern design and smooth user experience.",
       tech: ["HTML", "CSS", "Bootstrap"],
-      icon: ShoppingCart,
-      color: "from-green-500 to-emerald-600",
+      image: vegetableImg,
       link: "https://kriyagupta.github.io/kriyagupta-vegetable/",
     },
   ];
@@ -78,10 +78,14 @@ const Projects = () => {
                   {...cardProps}
                   className="group block bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-all duration-500 hover:-translate-y-2 border border-border"
                 >
-                  {/* Project Header with gradient */}
-                  <div className={`h-32 bg-gradient-to-r ${project.color} flex items-center justify-center relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/10" />
-                    <project.icon className="w-16 h-16 text-white/80 group-hover:scale-110 transition-transform duration-500" />
+                  {/* Project Image */}
+                  <div className="h-48 overflow-hidden relative">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   </div>
 
                   {/* Project Content */}
