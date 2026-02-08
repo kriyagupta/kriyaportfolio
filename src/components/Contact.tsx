@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
-const SERVICE_ID = "service_tqsl4gq";
+const SERVICE_ID = "service_wzj9zco";
 const TEMPLATE_ID = "template_tcpx0z8";
 const PUBLIC_KEY = "H1XXZ9S6E3BbSOKGu";
 
